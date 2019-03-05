@@ -1,0 +1,44 @@
+@mixin upAndDown($start, $end) {
+  @keyframes upAndDown {
+    from{bottom: $start}
+    to{bottom: $end}
+  }
+  animation: upAndDown 1s ease-in-out infinite alternate;
+}
+
+@mixin h2Title($color) {
+  margin-top: 0;
+  font-family: $font1;
+  font-size: 40px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  color: $color;
+  text-align: center;
+  &::before {
+    content:'';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 400px;
+    height: 2px;
+    transform: translateX(-50%);
+    background-color: $color;
+  }
+}
+
+@mixin boxShadow{
+  box-shadow: 0 1px 4px rgba($color_violet2, .5);
+}
+
+
+@mixin form-input-design {
+  background-color: transparent;
+  color: $color_beige1;
+  //border-radius: $borderRadius;
+  border: none;
+  border-bottom: 1px solid rgba($color_beige3, .5);
+  &::placeholder {
+    color: rgba($color_beige2, .5);
+  }
+}

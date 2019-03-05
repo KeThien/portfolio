@@ -1,0 +1,97 @@
+.work-file {
+  font-family: $font2;
+  padding: 120px 60px;
+  
+  @media screen and (max-width: 640px) {
+    padding: 120px 30px;
+  }
+  @media screen and (max-width: 375px) {
+    padding: 120px 10px;
+  }
+  
+  h2 {
+    @include h2Title($color_bordeau3);
+    text-align: left;
+    &::before {
+      //content:'';
+      //position: absolute;
+      //bottom: -10px;
+      left: 0;
+      width: 40%;
+      min-width: 300px;
+      //height: 2px;
+      transform: translateX(0);
+      //background-color: $color;
+    }
+  }
+  
+  p {
+    font-size: 18px;
+    margin: 80px auto 40px;
+  }
+
+  .category {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    font-size: 16px;
+    color: $color_bordeau1;
+  }
+  .gallery {
+    width: 100%;
+    .gallery-container {
+      margin: 0 auto;
+      text-align: center;
+    }
+    img {
+      width: 100%;
+    }
+  }
+  .client-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px auto;
+    @media screen and (max-width: 640px) {
+      flex-direction: column;
+      .client-info__left {
+        text-align: left;
+        width: 100%;
+      }
+      .client-info__right {
+        text-align: left;
+        width: 100%;
+      }
+    }
+    
+    h3 { 
+      align-self: flex-start;
+      margin: 0;  
+      text-align: left;   
+      font-family: $font2;
+      color: $color_bordeau3;
+      a {
+        //font-style: italic;
+        color: $color_violet1;
+        &:hover {
+          color: $color_aubergine2;
+        }
+      }
+    } //END h3
+    .tags-list {
+      margin-top: 20px;
+    }
+    span {
+      display: inline-block;
+      padding: 5px 20px;
+      margin: 5px 3px;
+      background-color: $color_beige1;
+      // background-image: url("");
+      border-radius: $borderRadius;
+      @include boxShadow;
+      border: 1px solid $color_beige3;
+      color: $color_aubergine2;
+      font-size: 12px;
+    }
+  } //END client-info
+}

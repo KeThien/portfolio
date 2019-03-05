@@ -1,0 +1,479 @@
+@keyframes slide {
+  0%{
+    transform: translate3d(0, 0, 0);
+  }
+  100%{
+    transform: translate3d(-1920px, 0, 0); /* The image width */
+  }
+}
+
+
+// HEADER 
+#top {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+
+  #scene {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    .overlay-beige{
+      background-color: $color_beige3;
+      background-image: url('~assets/img/paper_texture.jpg');
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      background-repeat: repeat;
+      background-blend-mode: multiply;  
+      background-size: 39%;
+    }
+    
+    .layer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .banner-l0 {
+      background: transparent repeat-x;
+      position: absolute;
+      width: 300%;
+      left: -100%; 
+      top: -10px; 
+      background-image: url('~assets/img/banner_kethien-L0.png');
+      height: 100%;
+      background-size: contain;
+      background-position: center bottom;
+      
+    }   
+    .banner-l1 {
+      background: transparent repeat-x;
+      position: absolute;
+      width: 300%;
+      left: -100%; 
+      top: -20px; 
+      background-image: url('~assets/img/banner_kethien-L1.png');
+      height: 100%;
+      background-size: contain;
+      background-position: center bottom;
+    }   
+    .banner-l2 {
+      background: transparent repeat-x;
+      position: absolute;
+      width: 300%;
+      left: -100%;  
+      background-image: url('~assets/img/banner_kethien-L2.png');
+      height: 100%;
+      background-size: contain;
+      background-position: center bottom;
+    }   
+    .banner-l3 {
+      background: transparent repeat-x;
+      position: absolute;
+      height: 100%;
+      width: 300%;
+      left: -100%;  
+      background-image: url('~assets/img/banner_kethien-L3.png');
+      background-size: contain;
+      background-position: center bottom;
+    }   
+    .banner-l4 {
+      background: transparent repeat-x;
+      position: absolute;
+      width: 300%;
+      left: -100%;  
+      background-image: url('~assets/img/banner_kethien-L4.png');
+      height: 100%;
+      background-size: contain;
+      background-position: center bottom;
+    }   
+    .banner-l5 {
+      //border: 1px solid green;
+      background: transparent repeat-x;
+      position: absolute;
+      width: 7680px;
+      height: 100%;
+      top: -50px;
+      left: -100%;  
+      background-image: url('~assets/img/banner_kethien-L5.png');
+      //filter: blur(1px);
+      //background-size: auto 100%;
+      //background-position: center bottom;
+      animation: slide 120s linear infinite;
+      
+      opacity: .8;
+      
+    }   
+    .banner-l6 {
+      //background: transparent repeat-x;
+      position: absolute;
+      width: 300%;
+      height: 100%;
+      left: -100%;  
+      background-image: url('~assets/img/banner_kethien-L6.png');
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      
+    }  
+  }
+
+  // &::before {
+  //   content:'';
+  //   height: 40px;
+  //   width: 1px;
+  //   background-color: $color_beige1;
+  //   position: absolute;
+  //   bottom: 15%;
+  //   left: 50%;
+  //   transform: translate(-50%, -50%);
+    
+  // }
+  &:after {
+    content:'';
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    bottom: 13%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url('~assets/img/down-arrow.svg');
+    background-size: contain;
+    @include upAndDown(13%, 12%);
+    z-index: 3;
+  }
+  h1 {
+    min-width: 300px;
+    z-index: 3;
+    font-family: $font1;
+    font-weight: 300;
+    color: $color_beige1;
+    font-size: 50px;
+    line-height: 40px;
+    position: absolute;
+    left: 50%; 
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    
+    strong {
+      font-weight: 700;
+    }
+    span {
+      font-family: $font2;
+      font-style: italic;
+      font-size: 12px;
+    }
+  }
+}
+nav.main-nav {
+  z-index: 10;
+  height: 50px;
+  width: 100%;
+  background-color: $color_aubergine2;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  a {
+    font-family: $font1;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 400;
+    color: $color_beige1;
+    margin: 0 10px;
+  }
+}
+
+
+// SECTIONS
+section {
+  padding: 130px 40px;
+}
+// MY WORKS SECTION
+
+.works {
+  width: 100%;
+  background-color: $color_beige2;
+  text-align: center;
+  font-family: $font2;
+  font-size: 15px;
+  font-weight: 400;
+  h2 {
+    @include h2Title($color_bordeau3);
+  }
+  .works__tags-filter {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    flex-flow: wrap;
+    //border: 1px solid green;
+    .button {
+      display: inline-block;
+      padding: 5px 20px;
+      margin: 5px 10px;
+      background-color: $color_beige1;
+      // background-image: url("");
+      border-radius: $borderRadius;
+      @include boxShadow;
+      color: $color_aubergine2;
+      cursor: pointer;
+
+      &.active {
+        cursor: auto;
+        background: $color_aubergine2;
+        color: $color_beige1;
+      }
+    }
+  }
+  .works__box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    margin: 0 auto;
+    padding: 30px;
+    
+    a {
+      text-decoration: none;
+    }
+
+    .card {
+      margin: 10px;
+      height: 364px;
+      width: 328px;
+      background: $color_beige1;
+      padding: 14px;
+      padding-bottom: 0;
+      border-radius: 3px;
+      display: flex;
+      flex-direction: column;
+      @include boxShadow;
+      transition: all .3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      &:hover {
+        transform: scale(1.05) rotate(2deg);
+      }
+    }
+    .card__img {
+      height: 300px;
+      width: 300px;
+      background: $color_beige3;
+      overflow: hidden;
+      border-radius: $borderRadius;
+      border: 1px inset rgba(0,0,0, .1);
+      img {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box; 
+        object-fit: cover;
+
+      }
+    }
+    .card__title {
+      color: $color_bordeau2;
+      font-size: 14px;
+      text-align: right; 
+      margin: auto 0;
+    }
+  }
+}
+
+.wrapper {
+  width: 100%;
+}
+
+// ABOUT SECTION
+.about {
+  width: 100%;
+  margin: 0;
+  background: $color_violet1;
+  color: $color_beige1;
+  font-family: $font2;
+  
+  .about__content {
+    margin: 0 auto;
+    margin-top: 50px;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    line-height: 24px;
+
+    .about__item--left {
+      //border: 1px solid white;
+      max-width: 400px;
+      padding: 30px;
+      align-content: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; 
+      align-items: flex-start;
+    }
+  } 
+
+  h2 {
+    @include h2Title($color_beige1);
+  } 
+  
+  .about__img {
+    height: 300px;
+    width: 300px;
+    background: $color_beige2;
+    border-radius: $borderRadius;
+    overflow: hidden;
+    border: 2px solid rgba($color_beige1, 1);
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+// CONTACT SECTION
+
+.contact {
+  width: 100%;
+  
+  background: $color_violet2;
+  margin: 0;
+  color: $color_beige1;
+  font-family: $font2;
+  
+  h2 {
+    @include h2Title($color_beige1);
+  }
+  .form-container {
+    margin: auto;
+    padding: 30px;
+    background: $color_violet1;
+    //border: 1px solid $color_bordeau3;
+    max-width: 380px;
+    @include boxShadow;
+    border-radius: $borderRadius;
+    font-size: 14px;
+    line-height: 20px;
+    
+    label { 
+      font-family: $font1;
+      color: $color_beige3;
+    }
+
+    textarea {
+      min-height: 100px;
+      margin-bottom: 10px;
+      width: 100%;
+      resize: vertical;
+      padding: 5px;
+      overflow: auto;
+      @include form-input-design;
+      border: none;
+      border-radius: $borderRadius;
+      background-color: rgba(black, .2) ;
+    }
+    
+    input {
+      width: 100%;
+      margin-bottom: 10px;
+      
+      padding: 5px;
+      @include form-input-design;
+    }
+    .contact-notice {
+      margin: -10px 0 10px;
+      font-style: italic;
+      font-size: 12px;
+    }
+    p {
+      font-size: 17px;
+    }
+
+    input[type=submit] {
+      width: 100%;
+      background-color: $color_bordeau2;
+      color: $color_beige1;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: $borderRadius;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    
+    input[type=submit]:hover {
+      background-color: $color_bordeau3;
+    }
+  }
+}
+
+// FOOtER
+
+footer {
+  font-family: $font2;
+  text-align: center;
+  background: $color_aubergine2;
+  .footer-content {
+    //border: 1px solid brown;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0 0;
+    color: $color_beige1;
+
+    .footer-nav {
+      //border: 1px solid brown;
+      //width: 50%;
+      padding: 0 20px;
+      height: 55px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      &:first-child {
+        text-align: center;
+      }
+      &:last-child { 
+        text-align: right;
+      }
+      p {
+        margin: 0;
+      }
+      h2 {
+        margin: 0;
+        font-family: $font1;
+        font-weight: 300;
+        color: $color_beige1;
+        font-size: 18px;
+      
+        strong {
+          font-weight: 700;
+        }
+      }
+      a {
+        text-decoration: none;
+        color: $color_beige1;
+        font-size: 16px;
+        margin: 0 5px;
+        &.a-em{
+          color: crimson;
+          font-weight: bold;
+        }
+      }
+      
+    }
+  }
+  .footer-note {
+    padding: 10px 0;
+    small {
+      color: $color_alphagrey;
+      span {
+        color: $color_bordeau2;
+      }
+    }
+  }
+
+}
