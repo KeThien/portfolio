@@ -1,7 +1,7 @@
 <template>
   <section id="hp-works" class="works">
     <h2>My Works</h2>
-    <div class="works__tags-filter">
+    <!-- <div class="works__tags-filter">
       <div data-type="" class="button active">
         <span class="text">All</span>
       </div>
@@ -14,7 +14,7 @@
       <div data-type="tag3" class="button">
         <span class="text">tag3</span>
       </div>
-    </div>
+    </div> -->
     <div class="wrapper">
       <div class="works__box">
         <a href="work.html">

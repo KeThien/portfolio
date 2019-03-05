@@ -9,7 +9,7 @@
           suscipit hic nisi optio. Voluptatem quis veniam architecto! Lorem ipsum dolor sit amet consectetur
           adipisicing elit. Iure, porro?
         </p>
-        <a href="https://www.linkedin.com/in/kethien/"><img src="/img/Logo-2CRev-14px.png" alt=""></a>
+        <a href="https://www.linkedin.com/in/kethien/"><img src="~assets/img/Logo-2CRev-14px.png" alt=""></a>
       </div>
       <div class="about__item--right">
         <div class="about__img">

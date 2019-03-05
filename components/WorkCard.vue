@@ -4,9 +4,7 @@
       <div class="card__img">
         <img :src="imgURL">
       </div>
-      <div class="card__title">
-        {{ title }}
-      </div>
+      <div class="card__title">{{ title }}</div>
     </div>
   </a>
 </template>
@@ -33,5 +31,5 @@ export default {
 }
 </script>
 
-<style>
+<style lang="sass">
 </style>

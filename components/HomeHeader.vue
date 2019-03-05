@@ -14,7 +14,7 @@
       </div>
     </nav>
 
-    <div id="scene">
+    <div id="scene" data-hover-only="true">
       <div data-depth="0" class="layer">
         <div class="overlay-beige" />
       </div>
@@ -50,7 +50,17 @@
 </template>
 
 <script>
-export default {}
+import Parallax from 'parallax-js'
+
+export default {
+  mounted() {
+    console.log('mounted')
+    const scene = document.getElementById('scene')
+    const parallaxInstance = new Parallax(scene)
+    parallaxInstance.limit(100, 30)
+    parallaxInstance.friction(0.075, 0.075)
+  }
+}
 </script>
 
 <style>
