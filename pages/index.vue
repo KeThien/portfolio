@@ -2,6 +2,7 @@
   <div class="homepage">
     <HomeHeader />
     <WorksGallery />
+
     <AboutMe />
     <ContactMe />
     <Footer />
@@ -9,11 +10,11 @@
 </template>
 
 <script>
-import HomeHeader from '~/components/HomeHeader.vue'
-import WorksGallery from '~/components/WorksGallery.vue'
+import HomeHeader from '~/components/HomeHeader'
+import WorksGallery from '~/components/WorksGallery'
 import AboutMe from '~/components/AboutMe.vue'
-import ContactMe from '~/components/ContactMe.vue'
-import Footer from '~/components/Footer.vue'
+import ContactMe from '~/components/ContactMe'
+import Footer from '~/components/Footer'
 
 export default {
   components: {

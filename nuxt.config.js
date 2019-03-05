@@ -1,4 +1,6 @@
 const pkg = require('./package')
+require('dotenv').config()
+// const client = require('./plugins/contentful')
 
 module.exports = {
   mode: 'universal',
@@ -43,7 +45,7 @@ module.exports = {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [],
+  plugins: ['~/plugins/contentful'],
 
   /*
   ** Nuxt.js modules
@@ -51,7 +53,8 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    'nuxt-imagemin'
+    'nuxt-imagemin',
+    '@nuxtjs/dotenv'
   ],
   /*
   ** Axios module configuration
@@ -78,5 +81,9 @@ module.exports = {
         })
       }
     }
+  },
+  env: {
+    CTF_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
+    CTF_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN
   }
 }

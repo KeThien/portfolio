@@ -2,7 +2,7 @@
   <a :href="link">
     <div class="card">
       <div class="card__img">
-        <img :src="imgURL">
+        <img :src="imgurl">
       </div>
       <div class="card__title">{{ title }}</div>
     </div>
@@ -16,7 +16,7 @@ export default {
       type: String,
       required: true
     },
-    imgURL: {
+    imgurl: {
       type: String,
       required: true
     },

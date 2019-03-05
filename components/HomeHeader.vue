@@ -54,7 +54,6 @@ import Parallax from 'parallax-js'
 
 export default {
   mounted() {
-    console.log('mounted')
     const scene = document.getElementById('scene')
     const parallaxInstance = new Parallax(scene)
     parallaxInstance.limit(100, 30)

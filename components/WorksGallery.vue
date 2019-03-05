@@ -17,59 +17,40 @@
     </div> -->
     <div class="wrapper">
       <div class="works__box">
-        <a href="work.html">
-          <div class="card">
-            <div class="card__img"><img src="~assets/img/placeholder-work.png"></div>
-            <div class="card__title">Raunsit Lorem, ipsum dolor sit amet consectetur adipisicing elit.</div>
-          </div>
-        </a>
-        <div class="card">
-          <div class="card__img">
-            <img src="~assets/img/placeholder-work.png">
-          </div>
-          <div class="card__title">
-            raunsite
-          </div>
-        </div>
-        <div class="card">
-          <div class="card__img">
-            <img src="~assets/img/placeholder-work.png">
-          </div>
-          <div class="card__title">
-            raunsite
-          </div>
-        </div>
-        <div class="card">
-          <div class="card__img">
-            <img src="~assets/img/placeholder-work.png">
-          </div>
-          <div class="card__title">
-            raunsite
-          </div>
-        </div>
-        <div class="card">
-          <div class="card__img">
-            <img src="~assets/img/placeholder-work.png">
-          </div>
-          <div class="card__title">
-            raunsite
-          </div>
-        </div>
-        <div class="card">
-          <div class="card__img">
-            <img src="~assets/img/placeholder-work.png">
-          </div>
-          <div class="card__title">
-            raunsite
-          </div>
-        </div>
+        <WorkCard title="lorem autsirens" imgurl="/_nuxt/assets/img/placeholder-work.png" link="work.html" />
       </div>
     </div>
+    {{ works[0].fields.title }}
+    test
   </section>
 </template>
 
 <script>
-export default {}
+import WorkCard from '~/components/WorkCard'
+import client from '~/plugins/contentful'
+
+export default {
+  components: {
+    WorkCard
+  },
+  data() {
+    return {
+      works: []
+    }
+  },
+  mounted() {
+    return client
+      .getEntries({
+        content_type: 'work',
+        order: '-sys.createdAt'
+      })
+      .then(entries => {
+        this.works = entries.items
+        return { works: entries.items }
+      })
+      .catch(e => console.log(e))
+  }
+}
 </script>
 
 <style>
