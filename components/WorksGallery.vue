@@ -17,11 +17,9 @@
     </div> -->
     <div class="wrapper">
       <div class="works__box">
-        <WorkCard title="lorem autsirens" imgurl="/_nuxt/assets/img/placeholder-work.png" link="work.html" />
+        <WorkCard v-for="work in works" :key="work.sys.id" :work="work" :thumbnail-url="thumbnail(work)" />
       </div>
     </div>
-    {{ works[0].fields.title }}
-    test
   </section>
 </template>
 
@@ -35,7 +33,8 @@ export default {
   },
   data() {
     return {
-      works: []
+      works: [],
+      assets: []
     }
   },
   mounted() {
@@ -46,9 +45,17 @@ export default {
       })
       .then(entries => {
         this.works = entries.items
-        return { works: entries.items }
+        return {
+          works: entries.items,
+          assets: entries.includes.Assets
+        }
       })
       .catch(e => console.log(e))
+  },
+  methods: {
+    thumbnail(work) {
+      return work.fields.thumbnail.fields.file.url
+    }
   }
 }
 </script>

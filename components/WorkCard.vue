@@ -1,8 +1,8 @@
 <template>
-  <a :href="link">
+  <a href="#">
     <div class="card">
       <div class="card__img">
-        <img :src="imgurl">
+        <img :src="thumbnailUrl">
       </div>
       <div class="card__title">{{ title }}</div>
     </div>
@@ -12,21 +12,19 @@
 <script>
 export default {
   props: {
-    title: {
-      type: String,
+    work: {
+      type: Object,
       required: true
     },
-    imgurl: {
-      type: String,
-      required: true
-    },
-    link: {
+    thumbnailUrl: {
       type: String,
       required: true
     }
   },
   data() {
-    return {}
+    return {
+      title: this.work.fields.title
+    }
   }
 }
 </script>
