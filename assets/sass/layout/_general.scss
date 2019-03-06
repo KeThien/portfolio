@@ -13,3 +13,6 @@ html {
 .hidden {
   display: none;
 }
+::selection {
+  background: #ffb7b7; /* WebKit/Blink Browsers */
+}
