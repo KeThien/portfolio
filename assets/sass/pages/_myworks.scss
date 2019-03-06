@@ -39,6 +39,7 @@
   .category {
     text-align: right;
     font-size: 16px; 
+    font-style: italic;
     margin-bottom: 10px;
     color: $color_bordeau1;
     
@@ -93,13 +94,19 @@
       display: inline-block;
       padding: 5px 20px;
       margin: 5px 3px;
-      background-color: $color_beige1;
+      background-color: $color_beige3;
       // background-image: url("");
       border-radius: $borderRadius;
-      @include boxShadow;
+      // @include boxShadow;
       border: 1px solid $color_beige3;
       color: $color_aubergine2;
       font-size: 12px;
+      font-weight: 600;
+    }
+    .client-link {
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: 700;
     }
   } //END client-info
 }

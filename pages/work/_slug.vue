@@ -35,6 +35,9 @@
 import client from '~/plugins/contentful'
 
 export default {
+  data() {
+    return {}
+  },
   asyncData({ params }) {
     return client
       .getEntries({
@@ -49,6 +52,7 @@ export default {
       })
       .catch(e => console.log(e))
   },
+
   head() {
     return {
       title: this.work.fields.title
