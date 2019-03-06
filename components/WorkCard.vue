@@ -1,12 +1,14 @@
 <template>
-  <a href="#">
+  <nuxt-link :to="{ name: 'work-slug', params: { slug: work.fields.slug}}">
     <div class="card">
       <div class="card__img">
         <img :src="thumbnailUrl">
       </div>
-      <div class="card__title">{{ title }}</div>
+      <div class="card__title">
+        {{ title }}
+      </div>
     </div>
-  </a>
+  </nuxt-link>
 </template>
 
 <script>

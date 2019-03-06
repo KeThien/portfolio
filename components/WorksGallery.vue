@@ -33,8 +33,7 @@ export default {
   },
   data() {
     return {
-      works: [],
-      assets: []
+      works: []
     }
   },
   mounted() {
@@ -46,8 +45,7 @@ export default {
       .then(entries => {
         this.works = entries.items
         return {
-          works: entries.items,
-          assets: entries.includes.Assets
+          works: entries.items
         }
       })
       .catch(e => console.log(e))
