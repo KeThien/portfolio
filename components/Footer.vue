@@ -13,10 +13,10 @@
       <nav class="footer-nav footer-menu">
         <h2><a href="#top"><strong>Ke Thien</strong> Nguyen</a></h2>
         <div class="links">
-          <a href="#top" class="a-em">Home</a>
-          <a href="#hp-works">Works</a>
-          <a href="#hp-about">About</a>
-          <a href="#hp-contact">Contact</a>
+          <a v-scroll-to="'#top'" href="#" class="a-em">Home</a>
+          <a v-scroll-to="'#hp-works'" class="main-nav__menu-item" href="#">Works</a>
+          <a v-scroll-to="'#hp-about'" class="main-nav__menu-item" href="#">About</a>
+          <a v-scroll-to="'#hp-contact'" class="main-nav__menu-item" href="#">Contact</a>
         </div>
       </nav>
     </div>

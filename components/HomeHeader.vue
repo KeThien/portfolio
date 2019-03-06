@@ -8,9 +8,9 @@
     <nav class="main-nav">
       <div class="main-nav__left" />
       <div class="main-nav__right">
-        <a class="main-nav__menu-item" href="#hp-works">Works</a>
-        <a class="main-nav__menu-item" href="#hp-about">About</a>
-        <a class="main-nav__menu-item" href="#hp-contact">Contact</a>
+        <a v-scroll-to="'#hp-works'" class="main-nav__menu-item" href="#">Works</a>
+        <a v-scroll-to="'#hp-about'" class="main-nav__menu-item" href="#">About</a>
+        <a v-scroll-to="'#hp-contact'" class="main-nav__menu-item" href="#">Contact</a>
       </div>
     </nav>
 

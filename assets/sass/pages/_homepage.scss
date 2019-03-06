@@ -351,7 +351,8 @@ section {
     @include h2Title($color_beige1);
   }
   .form-container {
-    margin: auto;
+    
+    margin: 0 auto;
     padding: 30px;
     background: $color_violet1;
     //border: 1px solid $color_bordeau3;
@@ -360,14 +361,32 @@ section {
     border-radius: $borderRadius;
     font-size: 14px;
     line-height: 20px;
-    
+
+    .form-wrap {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      .form__left {
+        min-width: 300px;
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+      }
+      .form__right {
+        margin: 10px;
+        flex-grow: 1;
+        height: 100%;
+      }
+      
+    }
+
     label { 
       font-family: $font1;
       color: $color_beige3;
     }
 
     textarea {
-      min-height: 100px;
+      min-height: 300px;
       margin-bottom: 10px;
       width: 100%;
       resize: vertical;
@@ -392,7 +411,9 @@ section {
       font-size: 12px;
     }
     p {
-      font-size: 17px;
+      font-size: 17px; 
+      text-align: center;
+      margin-bottom: 29px;
     }
 
     input[type=submit] {
@@ -405,76 +426,29 @@ section {
       border-radius: $borderRadius;
       cursor: pointer;
       font-size: 16px;
+      transition: all .3s ease-in-out;
     }
     
     input[type=submit]:hover {
       background-color: $color_bordeau3;
-    }
-  }
-}
-
-// FOOtER
-
-footer {
-  font-family: $font2;
-  text-align: center;
-  background: $color_aubergine2;
-  .footer-content {
-    //border: 1px solid brown;
-    display: flex;
-    justify-content: space-between;
-    padding: 30px 0 0;
-    color: $color_beige1;
-
-    .footer-nav {
-      //border: 1px solid brown;
-      //width: 50%;
-      padding: 0 20px;
-      height: 55px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      &:first-child {
-        text-align: center;
-      }
-      &:last-child { 
-        text-align: right;
-      }
-      p {
-        margin: 0;
-      }
-      h2 {
-        margin: 0;
-        font-family: $font1;
-        font-weight: 300;
-        color: $color_beige1;
-        font-size: 18px;
-      
-        strong {
-          font-weight: 700;
-        }
-      }
-      a {
-        text-decoration: none;
-        color: $color_beige1;
-        font-size: 16px;
-        margin: 0 5px;
-        &.a-em{
-          color: crimson;
-          font-weight: bold;
-        }
-      }
       
     }
   }
-  .footer-note {
-    padding: 10px 0;
-    small {
-      color: $color_alphagrey;
-      span {
-        color: $color_bordeau2;
-      }
+  @media screen and (min-width: 640px) {
+    padding: 120px 30px;
+    .form-container {
+      max-width: 1000px;
     }
   }
-
+  @media screen and (max-width: 800px) {
+    .form-wrap {
+      flex-direction: column !important;
+    }
+  }
+  @media screen and (max-width: 375px) {
+    padding: 120px 5px;
+    
+  }
 }
+
+

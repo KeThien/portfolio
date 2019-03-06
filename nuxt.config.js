@@ -48,7 +48,8 @@ module.exports = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     'nuxt-imagemin',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    'vue-scrollto/nuxt'
   ],
   /*
   ** Axios module configuration
