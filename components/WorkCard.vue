@@ -2,6 +2,11 @@
   <nuxt-link :to="{ name: 'work-slug', params: { slug: work.fields.slug}}">
     <div class="card">
       <div class="card__img">
+        <div class="card__desc">
+          <p>
+            {{ desc }}
+          </p>
+        </div>
         <img :src="thumbnailUrl">
       </div>
       <div class="card__title">
@@ -25,7 +30,8 @@ export default {
   },
   data() {
     return {
-      title: this.work.fields.title
+      title: this.work.fields.title,
+      desc: this.work.fields.smallDescription
     }
   }
 }

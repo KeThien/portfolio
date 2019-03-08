@@ -1,6 +1,7 @@
 .work-file {
   font-family: $font2;
   padding: 120px 60px;
+  padding-bottom: 0px;
   
   @media screen and (max-width: 640px) {
     padding: 120px 30px;
