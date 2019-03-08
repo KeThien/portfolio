@@ -334,6 +334,23 @@ section {
   background: $color_violet1;
   color: $color_beige1;
   font-family: $font2;
+  a {
+    display: inline-block;
+    color: $color_beige1;
+    font-family: $font2;
+    font-size: .9em;
+    margin: 0 10px;
+    text-decoration: underline;
+
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+  
   
   .about__content {
     margin: 0 auto;
@@ -349,11 +366,7 @@ section {
       //border: 1px solid white;
       max-width: 400px;
       padding: 30px;
-      align-content: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center; 
-      align-items: flex-start;
+      
     }
   } 
 
