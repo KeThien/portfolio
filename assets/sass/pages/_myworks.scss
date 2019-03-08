@@ -29,6 +29,8 @@
   p {
     font-size: 16px;
     margin: 80px auto 40px;
+    font-weight: 300;
+    color: $color_aubergine2;
   }
   i {
     position: absolute;
@@ -80,6 +82,7 @@
       text-align: left;   
       font-family: $font2;
       color: $color_bordeau3;
+      font-weight: 400;
       a {
         //font-style: italic;
         color: $color_violet1;
