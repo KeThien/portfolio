@@ -29,7 +29,7 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: '#3B8070' },
 
   /*
   ** Global CSS
@@ -76,9 +76,5 @@ module.exports = {
         })
       }
     }
-  },
-  env: {
-    CTF_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
-    CTF_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN
   }
 }
