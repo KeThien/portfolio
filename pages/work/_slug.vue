@@ -28,13 +28,18 @@
         </div> <!-- END TAGS-LIST -->
       </div>
     </div> <!-- END CLIENT-INFO -->
+    <Swiper />
   </section>
 </template>
 
 <script>
 import client from '~/plugins/contentful'
+import Swiper from '~/components/Swiper'
 
 export default {
+  components: {
+    Swiper
+  },
   data() {
     return {}
   },
