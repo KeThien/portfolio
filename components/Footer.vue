@@ -21,7 +21,7 @@
       </nav>
     </div>
     <div class="footer-note">
-      <small>Made with <span>❤</span> & Passion</small>
+      <small>Made with <span>❤</span> & Passion </small><small> © 2019</small>
     </div>
   </footer>
 </template>

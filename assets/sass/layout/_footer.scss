@@ -5,11 +5,12 @@ footer {
   font-family: $font2;
   text-align: center;
   background: $color_aubergine2;
+  position: relative;
   .footer-content {
     //border: 1px solid brown;
     display: flex;
     justify-content: space-between;
-    padding: 30px 0 0;
+    padding: 30px 0;
     color: $color_beige1;
 
     .footer-nav {
@@ -58,7 +59,11 @@ footer {
     }
   }
   .footer-note {
-    padding: 20px 0;
+    // padding: 20px 0;
+    position: absolute;
+    margin: 0 auto;
+    bottom: 10px;
+    width: 100%;
     small {
       color: $color_alphagrey;
       span {
