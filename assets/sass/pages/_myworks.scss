@@ -34,13 +34,16 @@
     font-weight: 300;
     color: $color_beige2;
   }
+  a {
+    text-decoration: underline;
+  }
   i {
     position: absolute;
     top: 0px;
     right: 0px;
     margin: 30px;
     font-size: 2em;
-    color: white;
+    color: $color_beige1;
     transition: all .2s ease-in-out;
     
     &:hover {
