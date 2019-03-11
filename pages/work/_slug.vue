@@ -91,4 +91,7 @@ export default {
     transform: translate3d(-100%, 0, 0);
   }
 }
+a {
+  color: $color_aubergine2;
+}
 </style>
