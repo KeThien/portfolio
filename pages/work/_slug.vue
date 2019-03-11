@@ -8,11 +8,7 @@
     <div class="category">
       {{ work.fields.category[0] }}
     </div>
-    <div class="gallery">
-      <div class="gallery-container">
-        <img :src="work.fields.images[0].fields.file.url" alt="placeholder-work">
-      </div>
-    </div>
+    <Swiper :images="work.fields.images" />
     <div class="client-info">
       <div class="client-info__left">
         <h3 class="client-name">
@@ -28,7 +24,6 @@
         </div> <!-- END TAGS-LIST -->
       </div>
     </div> <!-- END CLIENT-INFO -->
-    <Swiper />
   </section>
 </template>
 

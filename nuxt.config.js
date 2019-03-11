@@ -34,12 +34,15 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: ['@/assets/sass/style.scss'],
+  css: ['@/assets/sass/style.scss', 'swiper/dist/css/swiper.css'],
 
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: ['~/plugins/contentful'],
+  plugins: [
+    '~/plugins/contentful',
+    { src: '~/plugins/nuxt-swiper-plugin.js', ssr: false }
+  ],
 
   /*
   ** Nuxt.js modules
