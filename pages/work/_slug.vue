@@ -19,7 +19,7 @@
           {{ work.fields.clientName }}
         </h3>
         <h3 class="client-link">
-          <a :href="work.fields.linkUrl">{{ work.fields.linkUrl }}</a>
+          <a :href="work.fields.linkUrl">Demo</a>
         </h3>
       </div>
       <div class="client-info__right">
@@ -43,7 +43,9 @@ export default {
   data() {
     return {}
   },
-  asyncData({ params }) {
+  asyncData({ params, error, payload }) {
+    if (payload) return { work: payload }
+
     return client
       .getEntries({
         content_type: 'work',

@@ -44,9 +44,9 @@ export default {
       })
       .then(entries => {
         this.works = entries.items
-        return {
-          works: entries.items
-        }
+        // return {
+        //   works: entries.items
+        // }
       })
       .catch(e => console.log(e))
   },
