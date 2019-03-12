@@ -1,67 +1,70 @@
 <template>
   <section id="hp-contact" class="contact">
     <h2>Contact</h2>
-    <transition name="fly-away">
-      <form
-        v-show="!isSend"
-        name="contact"
-        action
-        netlify-honeypot="bot-field"
-        method="post"
-        netlify
-        @submit.prevent="sendForm"
-      >
-        <input type="hidden" name="form-name" value="contact">
-        <p class="hidden">
-          <label>
-            Don’t fill this out:
-            <input name="bot-field">
-          </label>
-        </p>
-        <div class="form-container">
-          <p>
-            If you want to say
-            <em>’Hello’</em> or hire me
+    <div class="form-wrapper" :style="{ height: formH }">
+      <transition name="fly-away">
+        <form
+          v-show="!isSend"
+          name="contact"
+          action
+          netlify-honeypot="bot-field"
+          method="post"
+          netlify
+          @submit.prevent="sendForm"
+        >
+          <input type="hidden" name="form-name" value="contact">
+          <p class="hidden">
+            <label>
+              Don’t fill this out:
+              <input name="bot-field">
+            </label>
           </p>
+          <div class="form-container">
+            <p>
+              If you want to say
+              <em>’Hello’</em> or hire me
+            </p>
 
-          <div class="form-wrap">
-            <div class="form__left">
-              <label for="name">Name*</label>
-              <input id="contact-name" type="text" name="name" placeholder="Your name">
-              <label for="email">Email*</label>
-              <input id="contact-email" type="email" name="email" placeholder="Your email">
-              <label for="subject">Subject</label>
-              <input id="contact-subject" type="text" name="subject" placeholder="The subject">
+            <div class="form-wrap">
+              <div class="form__left">
+                <label for="name">Name*</label>
+                <input id="contact-name" type="text" name="name" placeholder="Your name">
+                <label for="email">Email*</label>
+                <input id="contact-email" type="email" name="email" placeholder="Your email">
+                <label for="subject">Subject</label>
+                <input id="contact-subject" type="text" name="subject" placeholder="The subject">
+              </div>
+
+              <div class="form__right">
+                <label for="msg">Message</label>
+                <textarea
+                  id="contact-msg"
+                  class="common"
+                  name="msg"
+                  placeholder="Write something..."
+                />
+              </div>
             </div>
 
-            <div class="form__right">
-              <label for="msg">Message</label>
-              <textarea id="contact-msg" class="common" name="msg" placeholder="Write something..." />
+            <div class="contact-notice">
+              *required
             </div>
+            <button type="submit" class="btn-submit">
+              <i class="fa fa-paper-plane" /> Send
+            </button>
           </div>
-
-          <div class="contact-notice">
-            *required
-          </div>
-          <button type="submit" class="btn-submit">
-            <i class="fa fa-paper-plane" /> Send
+        </form>
+      </transition>
+      <transition name="fade">
+        <div v-if="showThank" class="thank-you">
+          <h3>Thank you</h3>
+          <p>Your message has been sent.</p>
+          <button @click="closeThankYou">
+            <i class="fa fa-times" /> Close
           </button>
         </div>
-      </form>
-    </transition>
-    <transition name="fade">
-      <div v-if="showThank" class="thank-you" :style="{ height: formH + 'px', width: formW + 'px' }">
-        <h3>
-          Thank you
-        </h3>
-        <p>
-          Your message has been sent.
-        </p>
-        <button @click="closeThankYou">
-          <i class="fa fa-times" /> Close
-        </button>
-      </div>
-    </transition>
+      </transition>
+    </div>
   </section>
 </template>
 
@@ -71,28 +74,26 @@ export default {
     return {
       isSend: false,
       showThank: false,
-      formW: Number,
       formH: Number
     }
   },
   methods: {
     sendForm() {
-      const form = document.querySelector('form')
-      this.formW = form.offsetWidth
-      this.formH = form.offsetHeight
+      const form = document.querySelector('.form-wrapper')
+      this.formH = form.offsetHeight + 'px'
       this.isSend = !this.isSend
       this.showThankYou()
     },
     showThankYou() {
       window.setTimeout(() => {
         this.showThank = true
-      }, 500)
+      }, 501)
     },
     closeThankYou() {
       this.showThank = false
       window.setTimeout(() => {
         this.isSend = false
-      }, 500)
+      }, 501)
     }
   }
 }
@@ -108,7 +109,7 @@ export default {
 }
 .fly-away-enter-active,
 .fly-away-leave-active {
-  transition: all 0.5s;
+  transition: all 0.7s;
 }
 .fly-away-enter {
   opacity: 0;
@@ -117,9 +118,12 @@ export default {
   transform: translateX(200%);
   opacity: 0;
 }
+.form-wrapper {
+}
+
 .thank-you {
   border: 0px solid white;
-
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
