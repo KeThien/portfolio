@@ -160,7 +160,7 @@
     text-align: center;
     
     strong {
-      font-weight: 700;
+      font-weight: 600;
     }
     span {
       font-family: $font2;
@@ -412,11 +412,8 @@ section {
     border-radius: $borderRadius;
     font-size: 14px;
     line-height: 20px;
-    transition: transform 1s;
+    transition: all 1s ease-out;
     transform-style: preserve-3d;
-    &:hover {
-      transform: rotateY(180deg);
-    }
 
     .form-wrap {
       display: flex;
@@ -475,7 +472,7 @@ section {
       margin-bottom: 29px;
     }
 
-    input[type=submit] {
+    .btn-submit {
       width: 100%;
       background-color: $color_bordeau2;
       color: $color_beige1;
@@ -486,6 +483,9 @@ section {
       cursor: pointer;
       font-size: 16px;
       transition: all .3s ease-in-out;
+      i {
+        margin: 0 5px;
+      }
     }
     
     input[type=submit]:hover {
