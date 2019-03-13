@@ -58,6 +58,10 @@ export default {
     const parallaxInstance = new Parallax(scene)
     parallaxInstance.limit(100, 30)
     parallaxInstance.friction(0.075, 0.075)
+    const viewportWidth = window.innerWidth
+    if (viewportWidth < 375) {
+      parallaxInstance.disable()
+    }
   }
 }
 </script>
