@@ -7,7 +7,6 @@
   }
 }
 
-
 // HEADER 
 #top {
   width: 100%;
@@ -402,6 +401,7 @@ section {
   h2 {
     @include h2Title($color_beige1);
   }
+  
   .form-container {
     margin: 0 auto;
     padding: 30px;
@@ -420,7 +420,9 @@ section {
       flex-direction: row;
       width: 100%;
       .form__left {
-        min-width: 300px;
+        @media screen and (min-width: 640px) {
+          min-width: 300px;
+        }
         margin: 10px;
         display: flex;
         flex-direction: column;
@@ -465,6 +467,8 @@ section {
       margin: -10px 0 10px;
       font-style: italic;
       font-size: 12px;
+      display: flex;
+      justify-content: space-between;
     }
     p {
       font-size: 17px; 
@@ -492,6 +496,25 @@ section {
       background-color: $color_bordeau3;
       
     }
+    .form-group__error {
+      transition: all .3s ease-in-out;
+      textarea {
+        border: 1px solid crimson;
+        box-shadow: 0 0 30px rgba( crimson, .5);
+        border-radius: 3px;
+      }
+      input {
+        border-bottom-color: crimson;
+        box-shadow: 0 5px 3px -2px rgba( crimson, .5);
+      }
+    }
+    .form-alert-error {
+      color: red;
+      font-size: 1.2em;
+      font-weight: 400;
+      font-style: normal;
+      transition: all 1s ease-in-out;
+    }
   }
   @media screen and (min-width: 640px) {
     padding: 120px 30px;
@@ -506,7 +529,6 @@ section {
   }
   @media screen and (max-width: 375px) {
     padding: 120px 5px;
-    
   }
 }
 

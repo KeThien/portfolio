@@ -5,6 +5,7 @@
       <transition name="fly-away">
         <form
           v-show="!isSend"
+          autocomplete="off"
           name="contact"
           action
           netlify-honeypot="bot-field"
@@ -22,35 +23,54 @@
           <div class="form-container">
             <p>
               If you want to say
-              <em>’Hello’</em> or hire me
+              <em>’Hello’</em> or hire me.
             </p>
 
             <div class="form-wrap">
               <div class="form__left">
-                <label for="name">Name*</label>
-                <input id="contact-name" type="text" name="name" placeholder="Your name">
-                <label for="email">Email*</label>
-                <input id="contact-email" type="email" name="email" placeholder="Your email">
-                <label for="subject">Subject</label>
-                <input id="contact-subject" type="text" name="subject" placeholder="The subject">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input id="contact-name" v-model="form.name" type="text" name="name" placeholder="Your name">
+                </div>
+
+                <div class="form-group" :class="{'form-group__error': $v.form.email.$error}">
+                  <label for="email">Email*</label>
+                  <input id="contact-email" v-model="form.email" type="email" name="email" placeholder="Your email">
+                </div>
+
+                <div class="form-group">
+                  <label for="subject">Subject</label>
+                  <input id="contact-subject" v-model="form.subject" type="text" name="subject" placeholder="The subject">
+                </div>
               </div>
 
               <div class="form__right">
-                <label for="msg">Message</label>
-                <textarea
-                  id="contact-msg"
-                  class="common"
-                  name="msg"
-                  placeholder="Write something..."
-                />
+                <div class="form-group" :class="{'form-group__error': $v.form.msg.$error}">
+                  <label for="msg">Message*</label>
+                  <textarea
+                    id="contact-msg"
+                    v-model="form.msg"
+                    class="common"
+                    name="msg"
+                    placeholder="Write something..."
+                  />
+                </div>
               </div>
             </div>
 
             <div class="contact-notice">
-              *required
+              <span>*required</span>
+              <span v-if="$v.form.$error" class="form-alert-error">
+                Please fill the required fields
+              </span>
             </div>
             <button type="submit" class="btn-submit">
-              <i class="fa fa-paper-plane" /> Send
+              <div v-if="form.submitStatus !== 'PENDING'">
+                <i class="fa fa-paper-plane" /> Submit
+              </div>
+              <div v-if="form.submitStatus === 'PENDING'">
+                <i class="fa fa-paper-plane" /> Sending...
+              </div>
             </button>
           </div>
         </form>
@@ -69,29 +89,73 @@
 </template>
 
 <script>
+import { validationMixin } from 'vuelidate'
+import { required, minLength, email } from 'vuelidate/lib/validators'
+
 export default {
+  mixins: [validationMixin],
   data() {
     return {
       isSend: false,
       showThank: false,
-      formH: Number
+      formH: Number,
+      form: {
+        name: '',
+        email: '',
+        subject: '',
+        msg: '',
+        submitStatus: null
+      }
+    }
+  },
+  validations: {
+    form: {
+      email: {
+        required,
+        email
+      },
+      msg: {
+        required,
+        minLength: minLength(10)
+      }
     }
   },
   methods: {
     sendForm() {
-      const form = document.querySelector('.form-wrapper')
-      this.formH = form.offsetHeight + 'px'
-      this.isSend = !this.isSend
-      this.showThankYou()
+      console.log('Submit!')
+      this.$v.form.$touch()
+      if (this.$v.form.$error) {
+        this.form.submitStatus = 'ERROR'
+        console.log('error')
+      } else {
+        console.log('pending')
+        this.form.submitStatus = 'PENDING'
+        setTimeout(() => {
+          this.submitStatus = 'OK'
+          console.log('ok')
+          const form = document.querySelector('.form-wrapper')
+          this.formH = form.offsetHeight + 'px'
+          this.isSend = !this.isSend
+          this.showThankYou()
+        }, 1000)
+      }
     },
     showThankYou() {
-      window.setTimeout(() => {
+      setTimeout(() => {
         this.showThank = true
       }, 501)
     },
     closeThankYou() {
       this.showThank = false
-      window.setTimeout(() => {
+      this.form = {
+        name: '',
+        email: '',
+        subject: '',
+        msg: '',
+        submitStatus: null
+      }
+      this.$v.$reset()
+      setTimeout(() => {
         this.isSend = false
       }, 501)
     }
@@ -117,8 +181,6 @@ export default {
 .fly-away-leave-to {
   transform: translateX(200%);
   opacity: 0;
-}
-.form-wrapper {
 }
 
 .thank-you {

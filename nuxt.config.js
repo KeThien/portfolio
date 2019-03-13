@@ -41,7 +41,8 @@ module.exports = {
   */
   plugins: [
     '~/plugins/contentful',
-    { src: '~/plugins/nuxt-swiper-plugin.js', ssr: false }
+    { src: '~/plugins/nuxt-swiper-plugin.js', ssr: false },
+    { src: '~/plugins/vuelidate.js', ssr: false }
   ],
 
   /*
