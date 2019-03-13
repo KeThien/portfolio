@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "description": "Web Portfolio made with Nuxt 2019",
+  "description": "Web Portfolio of Ke Thien Nguyen made with Nuxt / Vue.js in 2019",
   "author": "Ke Thien",
   "private": true,
   "scripts": {
