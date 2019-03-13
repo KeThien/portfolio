@@ -1,6 +1,6 @@
 const pkg = require('./package')
 require('dotenv').config()
-const contentful = require('./plugins/contentful')
+const client = require('./plugins/contentful')
 
 module.exports = {
   mode: 'universal',
@@ -104,10 +104,6 @@ module.exports = {
   },
   generate: {
     routes() {
-      const client = contentful.createClient({
-        space: process.env.CTF_SPACE_ID,
-        accessToken: process.env.CTF_CD_ACCESS_TOKEN
-      })
       return client
         .getEntries({
           content_type: 'work'
