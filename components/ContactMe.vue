@@ -122,6 +122,8 @@ export default {
   },
   methods: {
     sendForm() {
+      const form = document.querySelector('.form-wrapper')
+      this.formH = form.offsetHeight + 'px'
       console.log('Submit!')
       this.$v.form.$touch()
       if (this.$v.form.$error) {
@@ -133,8 +135,7 @@ export default {
         setTimeout(() => {
           this.submitStatus = 'OK'
           console.log('ok')
-          const form = document.querySelector('.form-wrapper')
-          this.formH = form.offsetHeight + 'px'
+
           this.isSend = !this.isSend
           this.showThankYou()
         }, 500)
