@@ -1,1 +1,183 @@
 // header css
+// HEADER 
+#top {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+
+  #scene {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    .overlay-beige{
+      background-color: $color_beige3;
+      background-image: url('~assets/img/paper_texture.jpg');
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      background-repeat: repeat;
+      background-blend-mode: multiply;  
+      background-size: 39%;
+    }
+    
+    .layer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .banner-l0 {
+      background: transparent repeat-x;
+      position: absolute;
+      width: 300%;
+      left: -100%; 
+      top: -10px; 
+      background-image: url('~assets/img/banner_kethien-L0.png');
+      height: 100%;
+      background-size: contain;
+      background-position: center bottom;
+      
+    }   
+    .banner-l1 {
+      background: transparent repeat-x;
+      position: absolute;
+      width: 300%;
+      left: -100%; 
+      top: -20px; 
+      background-image: url('~assets/img/banner_kethien-L1.png');
+      height: 100%;
+      background-size: contain;
+      background-position: center bottom;
+    }   
+    .banner-l2 {
+      background: transparent repeat-x;
+      position: absolute;
+      width: 300%;
+      left: -100%;  
+      background-image: url('~assets/img/banner_kethien-L2.png');
+      height: 100%;
+      background-size: contain;
+      background-position: center bottom;
+    }   
+    .banner-l3 {
+      background: transparent repeat-x;
+      position: absolute;
+      height: 100%;
+      width: 300%;
+      left: -100%;  
+      background-image: url('~assets/img/banner_kethien-L3.png');
+      background-size: contain;
+      background-position: center bottom;
+    }   
+    .banner-l4 {
+      background: transparent repeat-x;
+      position: absolute;
+      width: 300%;
+      left: -100%;  
+      background-image: url('~assets/img/banner_kethien-L4.png');
+      height: 100%;
+      background-size: contain;
+      background-position: center bottom;
+    }   
+    .banner-l5 {
+      //border: 1px solid green;
+      background: transparent repeat-x;
+      position: absolute;
+      width: 7680px;
+      height: 100%;
+      top: -50px;
+      left: -100%;  
+      background-image: url('~assets/img/banner_kethien-L5.png');
+      //filter: blur(1px);
+      //background-size: auto 100%;
+      //background-position: center bottom;
+      animation: slide 120s linear infinite;
+      
+      opacity: .8;
+      
+    }   
+    .banner-l6 {
+      //background: transparent repeat-x;
+      position: absolute;
+      width: 300%;
+      height: 100%;
+      left: -100%;  
+      background-image: url('~assets/img/banner_kethien-L6.png');
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      
+    }  
+  }
+
+  // &::before {
+  //   content:'';
+  //   height: 40px;
+  //   width: 1px;
+  //   background-color: $color_beige1;
+  //   position: absolute;
+  //   bottom: 15%;
+  //   left: 50%;
+  //   transform: translate(-50%, -50%);
+    
+  // }
+  &:after {
+    content:'';
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    bottom: 13%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url('~assets/img/down-arrow.svg');
+    background-size: contain;
+    @include upAndDown(13%, 12%);
+    z-index: 3;
+  }
+  h1 {
+    min-width: 300px;
+    z-index: 3;
+    font-family: $font1;
+    font-weight: 300;
+    color: $color_beige1;
+    font-size: 50px;
+    line-height: 40px;
+    position: absolute;
+    left: 50%; 
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    
+    strong {
+      font-weight: 600;
+    }
+    span {
+      font-family: $font2;
+      font-style: italic;
+      font-size: 12px;
+    }
+  }
+}
+nav.main-nav {
+  z-index: 10;
+  height: 50px;
+  width: 100%;
+  background-color: $color_aubergine2;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  a {
+    font-family: $font1;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 400;
+    color: $color_beige1;
+    margin: 0 10px;
+  }
+}
