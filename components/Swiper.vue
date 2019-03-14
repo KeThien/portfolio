@@ -6,9 +6,9 @@
           <img :src="image.fields.file.url" :alt="image.fields.title">
         </div>
       </div>
-      <div slot="button-prev" class="swiper-button-prev" />
-      <div slot="button-next" class="swiper-button-next" />
-      <div class="swiper-pagination swiper-pagination-bullets" />
+      <div v-if="images.length > 1" slot="button-prev" class="swiper-button-prev" />
+      <div v-if="images.length > 1" slot="button-next" class="swiper-button-next" />
+      <div v-if="images.length > 1" class="swiper-pagination swiper-pagination-bullets" />
     </div>
   </div>
 </template>
@@ -46,6 +46,11 @@ export default {
           console.log('onTap', this)
         }
       }
+    }
+  },
+  created() {
+    if (this.images.length <= 1) {
+      this.swiperOption.loop = false
     }
   }
 }

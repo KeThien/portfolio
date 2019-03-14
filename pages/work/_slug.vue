@@ -3,7 +3,7 @@
     <h2>{{ work.fields.title }}</h2>
     <p>{{ work.fields.description }}</p>
     <nuxt-link to="/#hp-works">
-      <i class="fas fa-times" />
+      <i id="btn-close" class="fas fa-times" />
     </nuxt-link>
     <div class="category">
       {{ work.fields.category[0] }}
@@ -16,6 +16,7 @@
         </h3>
         <h3 class="client-link">
           <a :href="work.fields.linkUrl">Demo</a>
+          <a :href="work.fields.sourceUrl">Source</a>
         </h3>
       </div>
       <div class="client-info__right">
@@ -63,7 +64,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+html {
+  background-color: #3f2e56;
+}
 .page-enter-active {
   animation: acrossIn 0.4s ease-out both;
 }
