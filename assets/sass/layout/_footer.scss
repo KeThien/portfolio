@@ -14,17 +14,17 @@ footer {
     color: $color_beige1;
 
     .footer-nav {
-      //border: 1px solid brown;
-      //width: 50%;
-      padding: 0 20px;
+      padding: 0;
       height: 55px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       &:first-child {
+        padding-left: 20px;
         text-align: center;
       }
       &:last-child { 
+        padding-right: 20px;
         text-align: right;
       }
       p {
@@ -55,7 +55,19 @@ footer {
           color: crimson;
         }
       }
-      
+      @media screen and (max-width: 375px){
+        p {
+          font-size: .6rem;
+        }
+        a {
+          margin: 0 1px;
+        }
+        .links {
+          a {
+            font-size: .9rem;
+          }
+        }
+      }
     }
   }
   .footer-note {
