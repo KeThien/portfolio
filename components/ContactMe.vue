@@ -8,9 +8,9 @@
           autocomplete="off"
           name="contact"
           action
-          netlify-honeypot="bot-field"
+          data-netlify-honeypot="bot-field"
           method="post"
-          netlify
+          data-netlify="true"
           @submit.prevent="sendForm"
         >
           <input type="hidden" name="form-name" value="contact">
@@ -76,7 +76,7 @@
         </form>
       </transition>
       <transition name="fade">
-        <div v-if="showThank" class="thank-you">
+        <div v-show="showThank" class="thank-you">
           <h3>Thank you</h3>
           <p>Your message has been sent.</p>
           <button @click="closeThankYou">
@@ -122,6 +122,8 @@ export default {
   },
   methods: {
     sendForm() {
+      const form = document.querySelector('.form-wrapper')
+      this.formH = form.offsetHeight + 'px'
       console.log('Submit!')
       this.$v.form.$touch()
       if (this.$v.form.$error) {
@@ -133,17 +135,16 @@ export default {
         setTimeout(() => {
           this.submitStatus = 'OK'
           console.log('ok')
-          const form = document.querySelector('.form-wrapper')
-          this.formH = form.offsetHeight + 'px'
+
           this.isSend = !this.isSend
           this.showThankYou()
-        }, 1000)
+        }, 500)
       }
     },
     showThankYou() {
       setTimeout(() => {
         this.showThank = true
-      }, 501)
+      }, 800)
     },
     closeThankYou() {
       this.showThank = false
@@ -157,7 +158,7 @@ export default {
       this.$v.$reset()
       setTimeout(() => {
         this.isSend = false
-      }, 501)
+      }, 800)
     }
   }
 }
@@ -179,12 +180,12 @@ export default {
   opacity: 0;
 }
 .fly-away-leave-to {
-  transform: translateX(200%);
+  transform: translateX(100px);
   opacity: 0;
 }
 
 .thank-you {
-  border: 0px solid white;
+  border: 2px solid white;
   height: 100%;
   display: flex;
   flex-direction: column;
