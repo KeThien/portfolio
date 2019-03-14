@@ -5,15 +5,14 @@
       <transition name="fly-away">
         <form
           v-show="!isSend"
-          autocomplete="off"
           name="contact"
-          action
-          data-netlify-honeypot="bot-field"
-          method="post"
+          method="POST"
+          autocomplete="off"
+          action=""
+          netlify-honeypot="bot-field"
           data-netlify="true"
           @submit.prevent="sendForm"
         >
-          <input type="hidden" name="form-name" value="contact">
           <p class="hidden">
             <label>
               Don’t fill this out:
@@ -57,13 +56,13 @@
                 </div>
               </div>
             </div>
-
             <div class="contact-notice">
               <span>*required</span>
               <span v-if="$v.form.$error" class="form-alert-error">
                 Please fill the required fields
               </span>
             </div>
+            
             <button type="submit" class="btn-submit">
               <div v-if="form.submitStatus !== 'PENDING'">
                 <i class="fa fa-paper-plane" /> Submit
@@ -80,7 +79,7 @@
           <h3>Thank you</h3>
           <p>Your message has been sent.</p>
           <button @click="closeThankYou">
-            <i class="fa fa-times" /> Close
+            <i class="fa fa-times" /> Back
           </button>
         </div>
       </transition>
@@ -93,6 +92,7 @@ import { validationMixin } from 'vuelidate'
 import { required, minLength, email } from 'vuelidate/lib/validators'
 
 export default {
+  name: 'ContactForm',
   mixins: [validationMixin],
   data() {
     return {
@@ -121,6 +121,14 @@ export default {
     }
   },
   methods: {
+    encode(data) {
+      console.log('encoding...')
+      return Object.keys(data)
+        .map(
+          key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+        )
+        .join('&')
+    },
     sendForm() {
       const form = document.querySelector('.form-wrapper')
       this.formH = form.offsetHeight + 'px'
@@ -134,7 +142,22 @@ export default {
         this.form.submitStatus = 'PENDING'
         setTimeout(() => {
           this.submitStatus = 'OK'
-          console.log('ok')
+          console.log('OK')
+
+          // // XHR POST
+          // fetch('/', {
+          //   method: 'POST',
+          //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          //   body: this.encode({
+          //     'form-name': 'contact',
+          //     ...this.form
+          //   })
+          // })
+          //   .then(() => console.log('Success send'))
+          //   // END XHR POST
+          //   .catch(e => {
+          //     console.log(e)
+          //   }) // END XHR ERROR
 
           this.isSend = !this.isSend
           this.showThankYou()
@@ -186,7 +209,8 @@ export default {
 }
 
 .thank-you {
-  border: 2px solid white;
+  border: 1px solid white;
+  border-radius: 1px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -201,10 +225,16 @@ export default {
   button {
     margin: 30px;
     padding: 9px;
-    background-color: #fff3e3;
-    border: none;
+    background-color: transparent;
+    border: 1px solid #fff3e3;
     border-radius: 2px;
     cursor: pointer;
+    color: #fff3e3;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      color: black;
+      background-color: #fff3e3;
+    }
   }
 }
 </style>
