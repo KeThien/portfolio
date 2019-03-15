@@ -10,7 +10,6 @@
           autocomplete="off"
           data-netlify="true"
           netlify-honeypot="bot-field"
-          data-netlify-recaptcha="true"
           @submit.prevent="handleSubmit"
         >
           <input type="hidden" name="form-name" value="contact">
@@ -63,7 +62,6 @@
                 Please fill the required fields
               </span>
             </div>
-            <div data-netlify-recaptcha="true" />
             <button type="submit" class="btn-submit">
               <div v-if="submitStatus !== 'PENDING'">
                 <i class="fa fa-paper-plane" /> Submit
