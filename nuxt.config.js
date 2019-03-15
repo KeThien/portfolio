@@ -63,9 +63,6 @@ module.exports = {
     {
       src: '~/plugins/vuelidate.js',
       ssr: false
-    },
-    {
-      src: '~/plugins/webpack.config.js'
     }
   ],
 
