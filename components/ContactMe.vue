@@ -8,10 +8,10 @@
           name="contact"
           method="post"
           autocomplete="off"
-          action=""
-          netlify
+          data-netlify="true"
           netlify-honeypot="bot-field"
->
+          @submit.prevent="handleSubmit"
+        >
           <input type="hidden" name="form-name" value="contact">
           <p class="hidden">
             <label>
@@ -64,10 +64,10 @@
             </div>
             
             <button type="submit" class="btn-submit">
-              <div v-if="form.submitStatus !== 'PENDING'">
+              <div v-if="submitStatus !== 'PENDING'">
                 <i class="fa fa-paper-plane" /> Submit
               </div>
-              <div v-if="form.submitStatus === 'PENDING'">
+              <div v-if="submitStatus === 'PENDING'">
                 <i class="fa fa-paper-plane" /> Sending...
               </div>
             </button>
@@ -88,6 +88,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import { validationMixin } from 'vuelidate'
 import { required, minLength, email } from 'vuelidate/lib/validators'
 
@@ -103,9 +104,9 @@ export default {
         name: '',
         email: '',
         subject: '',
-        msg: '',
-        submitStatus: null
-      }
+        msg: ''
+      },
+      submitStatus: null
     }
   },
   validations: {
@@ -129,20 +130,34 @@ export default {
         )
         .join('&')
     },
-    sendForm() {
+    handleSubmit() {
       const form = document.querySelector('.form-wrapper')
       this.formH = form.offsetHeight + 'px'
       console.log('Submit!')
       this.$v.form.$touch()
       if (this.$v.form.$error) {
-        this.form.submitStatus = 'ERROR'
+        this.submitStatus = 'ERROR'
         console.log('error')
       } else {
         console.log('pending')
-        this.form.submitStatus = 'PENDING'
+        this.submitStatus = 'PENDING'
         setTimeout(() => {
           this.submitStatus = 'OK'
           console.log('OK')
+
+          // AXIOS
+          const axiosConfig = {
+            header: { 'Content-Type': 'application/x-www-form-urlencoded' }
+          }
+          axios.post(
+            '/',
+            this.encode({
+              'form-name': 'contact',
+              ...this.form
+            }),
+            axiosConfig
+          )
+          // END AXIOS
 
           this.isSend = !this.isSend
           this.showThankYou()
