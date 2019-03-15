@@ -10,7 +10,7 @@
           autocomplete="off"
           action=""
           netlify-honeypot="bot-field"
-          data-netlify="true"
+          netlify
           @submit.prevent="sendForm"
         >
           <p class="hidden">
@@ -143,21 +143,6 @@ export default {
         setTimeout(() => {
           this.submitStatus = 'OK'
           console.log('OK')
-
-          // // XHR POST
-          // fetch('/', {
-          //   method: 'POST',
-          //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          //   body: this.encode({
-          //     'form-name': 'contact',
-          //     ...this.form
-          //   })
-          // })
-          //   .then(() => console.log('Success send'))
-          //   // END XHR POST
-          //   .catch(e => {
-          //     console.log(e)
-          //   }) // END XHR ERROR
 
           this.isSend = !this.isSend
           this.showThankYou()
