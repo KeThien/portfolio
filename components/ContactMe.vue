@@ -10,7 +10,7 @@
           action
           data-netlify-honeypot="bot-field"
           method="post"
-          data-netlify="true"
+          netlify
           @submit.prevent="sendForm"
         >
           <input type="hidden" name="form-name" value="contact">
