@@ -44,11 +44,11 @@
               </div>
 
               <div class="form__right">
-                <div class="form-group" :class="{'form-group__error': $v.form.msg.$error}">
-                  <label for="msg">Message*</label>
+                <div class="form-group" :class="{'form-group__error': $v.form.message.$error}">
+                  <label for="message">Message*</label>
                   <textarea
-                    id="contact-msg"
-                    v-model="form.msg"
+                    id="contact-message"
+                    v-model="form.message"
                     class="common"
                     name="message"
                     placeholder="Write something..."
@@ -103,7 +103,7 @@ export default {
         name: '',
         email: '',
         subject: '',
-        msg: ''
+        message: ''
       },
       submitStatus: null
     }
@@ -114,7 +114,7 @@ export default {
         required,
         email
       },
-      msg: {
+      message: {
         required,
         minLength: minLength(10)
       }
@@ -174,7 +174,7 @@ export default {
         name: '',
         email: '',
         subject: '',
-        msg: '',
+        message: '',
         submitStatus: null
       }
       this.$v.$reset()
