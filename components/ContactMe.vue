@@ -6,13 +6,14 @@
         <form
           v-show="!isSend"
           name="contact"
-          method="POST"
+          method="post"
           autocomplete="off"
           action=""
-          netlify-honeypot="bot-field"
           netlify
+          netlify-honeypot="bot-field"
           @submit.prevent="sendForm"
         >
+          <input type="hidden" name="form-name" value="contact">
           <p class="hidden">
             <label>
               Don’t fill this out:
