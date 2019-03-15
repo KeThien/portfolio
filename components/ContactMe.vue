@@ -5,13 +5,12 @@
       <transition name="fly-away">
         <form
           v-show="!isSend"
-          autocomplete="off"
           name="contact"
-          action
-          data-netlify-honeypot="bot-field"
           method="post"
-          netlify
-          @submit.prevent="sendForm"
+          autocomplete="off"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          @submit.prevent="handleSubmit"
         >
           <input type="hidden" name="form-name" value="contact">
           <p class="hidden">
@@ -45,19 +44,18 @@
               </div>
 
               <div class="form__right">
-                <div class="form-group" :class="{'form-group__error': $v.form.msg.$error}">
-                  <label for="msg">Message*</label>
+                <div class="form-group" :class="{'form-group__error': $v.form.message.$error}">
+                  <label for="message">Message*</label>
                   <textarea
-                    id="contact-msg"
-                    v-model="form.msg"
+                    id="contact-message"
+                    v-model="form.message"
                     class="common"
-                    name="msg"
+                    name="message"
                     placeholder="Write something..."
                   />
                 </div>
               </div>
             </div>
-
             <div class="contact-notice">
               <span>*required</span>
               <span v-if="$v.form.$error" class="form-alert-error">
@@ -65,10 +63,10 @@
               </span>
             </div>
             <button type="submit" class="btn-submit">
-              <div v-if="form.submitStatus !== 'PENDING'">
+              <div v-if="submitStatus !== 'PENDING'">
                 <i class="fa fa-paper-plane" /> Submit
               </div>
-              <div v-if="form.submitStatus === 'PENDING'">
+              <div v-if="submitStatus === 'PENDING'">
                 <i class="fa fa-paper-plane" /> Sending...
               </div>
             </button>
@@ -80,7 +78,7 @@
           <h3>Thank you</h3>
           <p>Your message has been sent.</p>
           <button @click="closeThankYou">
-            <i class="fa fa-times" /> Close
+            <i class="fa fa-times" /> Back
           </button>
         </div>
       </transition>
@@ -89,10 +87,12 @@
 </template>
 
 <script>
+import axios from 'axios'
 import { validationMixin } from 'vuelidate'
 import { required, minLength, email } from 'vuelidate/lib/validators'
 
 export default {
+  name: 'ContactForm',
   mixins: [validationMixin],
   data() {
     return {
@@ -103,9 +103,9 @@ export default {
         name: '',
         email: '',
         subject: '',
-        msg: '',
-        submitStatus: null
-      }
+        message: ''
+      },
+      submitStatus: null
     }
   },
   validations: {
@@ -114,27 +114,49 @@ export default {
         required,
         email
       },
-      msg: {
+      message: {
         required,
         minLength: minLength(10)
       }
     }
   },
   methods: {
-    sendForm() {
+    encode(data) {
+      console.log('encoding...')
+      return Object.keys(data)
+        .map(
+          key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+        )
+        .join('&')
+    },
+    handleSubmit() {
       const form = document.querySelector('.form-wrapper')
       this.formH = form.offsetHeight + 'px'
       console.log('Submit!')
       this.$v.form.$touch()
       if (this.$v.form.$error) {
-        this.form.submitStatus = 'ERROR'
+        this.submitStatus = 'ERROR'
         console.log('error')
       } else {
         console.log('pending')
-        this.form.submitStatus = 'PENDING'
+        this.submitStatus = 'PENDING'
         setTimeout(() => {
           this.submitStatus = 'OK'
-          console.log('ok')
+          console.log('OK')
+
+          // AXIOS
+          const axiosConfig = {
+            header: { 'Content-Type': 'application/x-www-form-urlencoded' }
+          }
+          axios.post(
+            '/',
+            this.encode({
+              'form-name': 'contact',
+              ...this.form
+            }),
+            axiosConfig
+          )
+          // END AXIOS
 
           this.isSend = !this.isSend
           this.showThankYou()
@@ -152,7 +174,7 @@ export default {
         name: '',
         email: '',
         subject: '',
-        msg: '',
+        message: '',
         submitStatus: null
       }
       this.$v.$reset()
@@ -186,7 +208,8 @@ export default {
 }
 
 .thank-you {
-  border: 2px solid white;
+  border: 1px solid white;
+  border-radius: 1px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -201,10 +224,16 @@ export default {
   button {
     margin: 30px;
     padding: 9px;
-    background-color: #fff3e3;
-    border: none;
+    background-color: transparent;
+    border: 1px solid #fff3e3;
     border-radius: 2px;
     cursor: pointer;
+    color: #fff3e3;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      color: black;
+      background-color: #fff3e3;
+    }
   }
 }
 </style>
