@@ -11,8 +11,7 @@
           action=""
           netlify
           netlify-honeypot="bot-field"
-          @submit.prevent="sendForm"
-        >
+>
           <input type="hidden" name="form-name" value="contact">
           <p class="hidden">
             <label>
