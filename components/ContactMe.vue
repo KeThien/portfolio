@@ -50,7 +50,7 @@
                     id="contact-msg"
                     v-model="form.msg"
                     class="common"
-                    name="msg"
+                    name="message"
                     placeholder="Write something..."
                   />
                 </div>
