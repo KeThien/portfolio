@@ -1,7 +1,8 @@
 <template>
   <section class="work-file">
     <h2>{{ work.fields.title }}</h2>
-    <p>{{ work.fields.description }}</p>
+    <div v-html="$md.render(work.fields.description)" />
+    <div>{{ description }}</div>
     <nuxt-link to="/#hp-works">
       <i id="btn-close" class="fas fa-times" />
     </nuxt-link>

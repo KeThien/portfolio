@@ -72,6 +72,7 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/markdownit',
     'nuxt-imagemin',
     '@nuxtjs/dotenv',
     'vue-scrollto/nuxt'
@@ -82,7 +83,15 @@ module.exports = {
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
   },
-
+  // [optional] markdownit options
+  // See https://github.com/markdown-it/markdown-it
+  markdownit: {
+    preset: 'default',
+    html: true,
+    linkify: true,
+    breaks: true,
+    injected: true
+  },
   /*
    ** Build configuration
    */
