@@ -16,8 +16,8 @@
           {{ work.fields.clientName }}
         </h3>
         <h3 class="client-link">
-          <a :href="work.fields.linkUrl">Demo</a>
-          <a :href="work.fields.sourceUrl">Source</a>
+          <a :href="work.fields.linkUrl" target="_blank">Demo</a>
+          <a :href="work.fields.sourceUrl" target="_blank">Source</a>
         </h3>
       </div>
       <div class="client-info__right">

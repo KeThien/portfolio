@@ -10,8 +10,8 @@
           <em>“Learn, Create and Share”</em> is my motto in life.  I'm mostly self&#8209;taught (thank you, Internet). <br>
           I'm passionate about creating things with my hands like sculpting, folding origami, printing 3d objects. 
         </p>
-        <a href="https://www.linkedin.com/in/kethien/"><img src="~assets/img/Logo-2CRev-14px.png" alt=""></a>
-        <a href="https://drive.google.com/file/d/1DkvP9AMbDi5GRBB-eUZoWXtK6uRNXMis/view?usp=sharing">My resume</a>
+        <a href="https://www.linkedin.com/in/kethien/" target="_blank"><img src="~assets/img/Logo-2CRev-14px.png" alt=""></a>
+        <a href="https://drive.google.com/file/d/1DkvP9AMbDi5GRBB-eUZoWXtK6uRNXMis/view?usp=sharing" target="_blank">My resume</a>
       </div>
       <div class="about__item--right">
         <div class="about__img">
