@@ -4,7 +4,7 @@
     <div class="about__content">
       <div class="about__item--left">
         <p>
-          Hi, my name is Ke Thien Nguyen. <br>I live in Brussels, Belgium.  I'm an alumnus from Le&nbsp;Wagon Brussels Bootcamp and Cepegra Front&#8209;end Developer. There, I learned to code and worked in a team. 
+          Hi, my name is Ke Thien Nguyen. <br>I live in Brussels, Belgium.  I'm an alumnus from Le&nbsp;Wagon Brussels Bootcamp and Cepegra Front&#8209;end Developer. There, I learned to code and worked in a team. Since then I'm hooked on Vue.js and javascript.
         </p>
         <p>
           <em>“Learn, Create and Share”</em> is my motto in life.  I'm mostly self&#8209;taught (thank you, Internet). <br>
