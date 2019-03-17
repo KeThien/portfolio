@@ -8,6 +8,7 @@
   h2 {
     @include h2Title($color_beige1);
     text-align: left;
+    margin-bottom: 80px;
     &::before {
       //content:'';
       //position: absolute;
@@ -23,7 +24,7 @@
   
   p {
     font-size: 16px;
-    margin: 80px auto 40px;
+    margin: 0 auto 30px;
     font-weight: 300;
     color: $color_beige2;
   }
