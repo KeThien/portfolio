@@ -75,7 +75,8 @@ module.exports = {
     '@nuxtjs/markdownit',
     'nuxt-imagemin',
     '@nuxtjs/dotenv',
-    'vue-scrollto/nuxt'
+    'vue-scrollto/nuxt',
+    '@nuxtjs/sitemap'
   ],
   /*
    ** Axios module configuration
@@ -120,6 +121,36 @@ module.exports = {
         .then(entries => {
           return entries.items.map(entry => {
             return '/work/' + entry.fields.slug
+          })
+        })
+    }
+  },
+  sitemap: {
+    path: '/sitemap.xml',
+    hostname: 'https://kethien.be',
+    cacheTime: 1000 * 60 * 15,
+    gzip: true,
+    generate: false, // Enable me when using nuxt generate
+    routes: [
+      {
+        url: '/works/',
+        changefreq: 'monthly',
+        priority: 0.5
+      }
+    ],
+    // eslint-disable-next-line no-dupe-keys
+    routes() {
+      return client
+        .getEntries({
+          content_type: 'work'
+        })
+        .then(entries => {
+          return entries.items.map(entry => {
+            return {
+              url: '/work/' + entry.fields.slug,
+              changefreq: 'monthly',
+              priority: 0.5
+            }
           })
         })
     }
