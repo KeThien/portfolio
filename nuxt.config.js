@@ -119,10 +119,7 @@ module.exports = {
         })
         .then(entries => {
           return entries.items.map(entry => {
-            return {
-              route: entry.fields.slug,
-              payload: entry
-            }
+            return '/work/' + entry.fields.slug
           })
         })
     }
