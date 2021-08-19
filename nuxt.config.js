@@ -154,5 +154,10 @@ module.exports = {
           })
         })
     }
-  }
+  },
+  env: {
+    CTF_SPACE: process.env.CTF_SPACE,
+    CTF_ACCESSTOKEN: process.env.CTF_ACCESSTOKEN,
+    CTF_ENVIRONMENT: process.env.CTF_ENVIRONMENT
+  },
 }
