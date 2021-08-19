@@ -1,3 +1,3 @@
 # portfolio
 
-> Web Portfolio made with Nuxt 2019
+> Web Portfolio made with Nuxt
