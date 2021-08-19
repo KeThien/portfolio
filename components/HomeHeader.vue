@@ -33,7 +33,7 @@
       <div data-depth="0.3" class="layer">
         <h1>
           <strong>Ke Thien</strong> Nguyen <br>
-          <span>Front-end Developer & Tinkerer</span>
+          <span>Tinkerer at heart</span>
         </h1>
       </div>
       <div data-depth="0.6" class="layer">
