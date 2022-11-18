@@ -19,7 +19,7 @@
     "@nuxtjs/sitemap": "^0.2.2",
     "contentful": "^7.3.0",
     "cross-env": "^5.2.0",
-    "nuxt": "^2.4.0",
+    "nuxt": "^2.15.8",
     "parallax-js": "^3.1.0",
     "prerender-spa-plugin": "^3.4.0",
     "vue-awesome-swiper": "^3.1.3",
